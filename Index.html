@@ -1,1 +1,353 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clyro</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #111318;
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* SERVER BAR */
+.servers {
+    width: 72px;
+    background: #0b0d10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    gap: 12px;
+}
+
+.server {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: #1b1f27;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.server:hover {
+    border-radius: 12px;
+    background: #5865f2;
+}
+
+.server.clyro {
+    background: #5865f2;
+    font-size: 20px;
+}
+
+/* CHANNELS */
+.channels {
+    width: 240px;
+    background: #15181e;
+    display: flex;
+    flex-direction: column;
+}
+
+.server-header {
+    height: 60px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #252932;
+    font-weight: bold;
+}
+
+.channel-list {
+    padding: 18px 10px;
+}
+
+.category {
+    color: #777e8c;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 10px 8px;
+    text-transform: uppercase;
+}
+
+.channel {
+    padding: 10px;
+    border-radius: 6px;
+    color: #9da4b2;
+    cursor: pointer;
+    margin-bottom: 3px;
+}
+
+.channel:hover,
+.channel.active {
+    background: #242933;
+    color: white;
+}
+
+/* CHAT */
+.chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.chat-header {
+    height: 60px;
+    border-bottom: 1px solid #252932;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: bold;
+}
+
+.chat-header span {
+    color: #777e8c;
+    margin-right: 8px;
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #5865f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.message-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.time {
+    font-size: 11px;
+    color: #666d79;
+}
+
+.text {
+    color: #c7cbd4;
+    margin-top: 4px;
+}
+
+.message-box {
+    padding: 15px 20px 20px;
+}
+
+.input {
+    background: #20242c;
+    border-radius: 8px;
+    padding: 14px;
+    color: #777e8c;
+}
+
+/* MEMBERS */
+.members {
+    width: 210px;
+    background: #15181e;
+    padding: 20px 12px;
+}
+
+.members-title {
+    color: #777e8c;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: #c7cbd4;
+}
+
+.member .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 750px) {
+    .members {
+        display: none;
+    }
+
+    .channels {
+        width: 190px;
+    }
+
+    .servers {
+        width: 60px;
+    }
+}
+
+@media (max-width: 520px) {
+    .channels {
+        display: none;
+    }
+
+    .servers {
+        width: 58px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="servers">
+        <div class="server clyro">C</div>
+        <div class="server">+</div>
+        <div class="server">🎮</div>
+        <div class="server">💬</div>
+    </div>
+
+    <div class="channels">
+
+        <div class="server-header">
+            Clyro
+        </div>
+
+        <div class="channel-list">
+
+            <div class="category">Text Channels</div>
+
+            <div class="channel active">
+                # general
+            </div>
+
+            <div class="channel">
+                # chat
+            </div>
+
+            <div class="channel">
+                # gaming
+            </div>
+
+            <div class="channel">
+                # announcements
+            </div>
+
+            <div class="category">Voice Channels</div>
+
+            <div class="channel">
+                🔊 General
+            </div>
+
+        </div>
+    </div>
+
+    <main class="chat">
+
+        <div class="chat-header">
+            <span>#</span> general
+        </div>
+
+        <div class="messages">
+
+            <div class="message">
+                <div class="avatar">C</div>
+
+                <div>
+                    <div class="message-info">
+                        <div class="username">Clyro</div>
+                        <div class="time">Today</div>
+                    </div>
+
+                    <div class="text">
+                        Welcome to Clyro! 👋
+                    </div>
+                </div>
+            </div>
+
+            <div class="message">
+                <div class="avatar">A</div>
+
+                <div>
+                    <div class="message-info">
+                        <div class="username">Alex</div>
+                        <div class="time">Today</div>
+                    </div>
+
+                    <div class="text">
+                        This is the beginning of something new.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="message-box">
+            <div class="input">
+                Message #general
+            </div>
+        </div>
+
+    </main>
+
+    <aside class="members">
+
+        <div class="members-title">
+            MEMBERS — 2
+        </div>
+
+        <div class="member">
+            <div class="avatar">C</div>
+            Clyro
+        </div>
+
+        <div class="member">
+            <div class="avatar">A</div>
+            Alex
+        </div>
+
+    </aside>
+
+</div>
+
+</body>
+</html>
